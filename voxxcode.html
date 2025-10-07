@@ -1,0 +1,727 @@
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vox Marketing — Brand Voice & Digital Velocity</title>
+
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary: #2563eb;       /* confident blue */
+      --secondary: #1e293b;     /* dark charcoal */
+      --accent: #f97316;        /* orange accent */
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --radius: 12px;
+      --max-width: 1200px;
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+
+    /* Reset & base */
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      font-weight:400;
+      color:var(--secondary);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header{
+      background:transparent;
+      position:relative;
+      padding:20px 0;
+    }
+
+    /* Nav */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:600;
+      color:var(--secondary);
+      font-size:1.05rem;
+      letter-spacing:0.2px;
+    }
+    .logo-mark{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(37,99,235,0.12);
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:18px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      font-size:0.95rem;
+      color:var(--secondary);
+      padding:8px 10px;
+      border-radius:8px;
+      transition:all .18s var(--ease);
+    }
+    nav a:hover{ background: rgba(37,99,235,0.06); color:var(--primary); transform:translateY(-2px) }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height:66vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border-bottom-left-radius:28px;
+      border-bottom-right-radius:28px;
+      margin-bottom:48px;
+    }
+    .hero .bg{
+      position:absolute;
+      inset:0;
+      background-image: url("https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg");
+      background-size:cover;
+      background-position:center;
+      filter:grayscale(10%) contrast(90%) saturate(85%) blur(.5px);
+      transform: scale(1.05);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.28) 50%, rgba(2,6,23,0.48) 100%);
+    }
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:var(--max-width);
+      padding:60px 20px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:24px;
+      align-items:center;
+    }
+    .hero-left{
+      max-width:720px;
+      color:var(--white);
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-size:0.9rem;
+      background: rgba(255,255,255,0.06);
+      padding:8px 12px;
+      border-radius:999px;
+      margin-bottom:18px;
+      color: #e2e8f0;
+      width:fit-content;
+    }
+    .hero h1{
+      margin:0 0 12px 0;
+      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      line-height:1.02;
+      font-weight:600;
+      color:var(--white);
+      letter-spacing:-0.5px;
+    }
+    .hero p.lead{
+      margin:0 0 18px 0;
+      color: #e6eefc;
+      font-size:1.05rem;
+      max-width:56ch;
+    }
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      background:var(--white);
+      color:var(--primary);
+      transition: all .18s var(--ease);
+      box-shadow: 0 8px 22px rgba(16,24,40,0.06);
+    }
+    .btn:hover{ transform:translateY(-4px); box-shadow:0 14px 40px rgba(16,24,40,0.12) }
+    .btn.secondary{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.12);
+      color:rgba(255,255,255,0.95);
+      box-shadow:none;
+    }
+    .btn.secondary:hover{ background: rgba(255,255,255,0.06) }
+
+    /* Hero visuals card */
+    .hero-card{
+      margin-top:10px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .stat{
+      background: rgba(255,255,255,0.06);
+      padding:12px 14px;
+      border-radius:12px;
+      color: #e6eefc;
+      font-size:0.95rem;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Main content sections */
+    main{
+      margin-top:-28px; /* lift up against hero */
+      position:relative;
+      z-index:3;
+      padding-bottom:40px;
+    }
+    section{
+      padding:40px 0;
+    }
+
+    /* Services */
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:20px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:1.4rem;
+      color:var(--secondary);
+      font-weight:600;
+    }
+    .services-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(2, 1fr); /* mobile 2x2 */
+    }
+    .service{
+      background:var(--white);
+      padding:18px;
+      border-radius:14px;
+      box-shadow: 0 8px 22px rgba(16,24,40,0.06);
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      transition: transform .16s var(--ease), box-shadow .16s var(--ease);
+      overflow:hidden;
+    }
+    .service:hover{ transform:translateY(-6px); box-shadow:0 18px 44px rgba(16,24,40,0.08) }
+    .service .icon{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--primary), rgba(37,99,235,0.9));
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:600;
+      flex-shrink:0;
+      font-size:1.15rem;
+    }
+    .service h3{
+      margin:0;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--secondary);
+    }
+    .service p{ margin:6px 0 0 0; color:var(--muted); font-size:0.95rem; }
+
+    /* Testimonials carousel */
+    .testi-wrap{
+      background: linear-gradient(180deg, var(--white), #fbfdff);
+      padding:28px;
+      border-radius:14px;
+      box-shadow: 0 8px 30px rgba(16,24,40,0.05);
+    }
+    .testi-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:16px;
+    }
+    .carousel{
+      position:relative;
+      overflow:hidden;
+      min-height:140px;
+    }
+    .slides{
+      display:flex;
+      transition: transform .6s var(--ease);
+      will-change: transform;
+    }
+    .slide{
+      min-width:100%;
+      padding:12px 6px;
+      box-sizing:border-box;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .quote{
+      font-size:1rem;
+      color:var(--secondary);
+      margin:0 0 8px 0;
+      font-style:normal;
+    }
+    .byline{
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+    .dots{
+      display:flex;
+      gap:8px;
+      margin-top:14px;
+      justify-content:center;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;background:#e6eefc;opacity:.5;cursor:pointer;transition:all .16s;
+    }
+    .dot.active{ transform:scale(1.3); opacity:1; background:var(--primary) }
+
+    /* CTA */
+    .cta{
+      background: linear-gradient(90deg, rgba(37,99,235,0.06), rgba(249,115,22,0.03));
+      padding:36px;
+      border-radius:14px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta h3{ margin:0; font-size:1.25rem; color:var(--secondary); font-weight:600 }
+    .cta p{ margin:6px 0 0 0; color:var(--muted) }
+
+    /* Footer */
+    footer{
+      margin-top:34px;
+      padding:28px 0;
+      border-top:1px solid rgba(16,24,40,0.04);
+      background:transparent;
+    }
+    .footer-grid{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .footer-left{ max-width:420px; }
+    .footer-links{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .socials{
+      display:flex;
+      gap:12px;
+      margin-top:10px;
+    }
+    .socials a{
+      display:inline-flex;
+      width:38px;height:38px;border-radius:10px;
+      align-items:center;justify-content:center;
+      background:rgba(16,24,40,0.04);
+      transition:transform .12s;
+    }
+    .socials a:hover{ transform:translateY(-4px) }
+
+    .small{
+      color:var(--muted);
+      font-size:0.9rem;
+      margin-top:14px;
+    }
+
+    /* Responsive breakpoints */
+    @media(min-width:900px){
+      nav ul{gap:22px}
+      .hero-inner{ grid-template-columns: 1fr 420px; align-items:center; padding:80px 20px; }
+      .hero-card{ flex-direction:column; align-items:flex-end }
+      .services-grid{ grid-template-columns: repeat(4, 1fr) } /* desktop: 4 in a row */
+      .section-head h2{ font-size:1.6rem }
+      .cta{ padding:42px }
+    }
+    @media(max-width:520px){
+      .nav{ padding:6px 0 }
+      .logo{ font-size:0.98rem }
+      .hero{ min-height:62vh }
+      .hero-inner{ padding:36px 12px }
+      .service{ padding:14px }
+    }
+
+    /* small utility */
+    .muted{ color:var(--muted) }
+    .text-center{ text-align:center }
+    .mt-8{ margin-top:8px }
+    .mb-4{ margin-bottom:16px }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo" aria-label="Vox Marketing logo">
+        <div class="logo-mark" aria-hidden="true">Vx</div>
+        <div>
+          <div>Vox Marketing</div>
+          <div style="font-size:0.78rem;color:var(--muted);font-weight:400">Brand Voice & Digital Velocity</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home" role="banner" aria-label="Hero section">
+    <div class="bg" aria-hidden="true"></div>
+
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <div class="eyebrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 17l-5-5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>Agency • Vox Marketing</span>
+        </div>
+
+        <h1>Amplify Your Brand's Voice.</h1>
+        <p class="lead">Data-driven digital marketing and stunning design that converts. Built for ambitious brands in motion.</p>
+
+        <div class="cta-row" role="group" aria-label="Primary actions">
+          <button class="btn" onclick="location.href='#contact'">
+            <!-- Primary -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Get a Free Strategy Call
+          </button>
+
+          <button class="btn secondary" onclick="location.href='#work'">
+            View Our Case Studies
+          </button>
+        </div>
+
+        <div class="hero-card mt-8" aria-hidden="true">
+          <div class="stat"><strong>+28%</strong><span style="opacity:.85">Avg. Conversion Lift</span></div>
+          <div class="stat"><strong>3–6 weeks</strong><span style="opacity:.85">Typical Campaign Launch</span></div>
+        </div>
+      </div>
+
+      <!-- right side visual card -->
+      <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;">
+        <div style="width:100%;max-width:420px;background:linear-gradient(180deg,rgba(255,255,255,0.92),white);border-radius:12px;padding:12px;box-shadow:0 12px 36px rgba(16,24,40,0.08);">
+          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Visual example" style="border-radius:10px;height:240px;object-fit:cover;width:100%">
+          <div style="padding:12px 8px;">
+            <div style="font-weight:600;color:var(--secondary)">Design + Performance</div>
+            <div style="color:var(--muted);font-size:0.95rem;margin-top:6px">A fast, tested approach to creative that converts and scales.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- SERVICES -->
+    <section id="services" class="container" aria-labelledby="services-title">
+      <div class="section-head">
+        <h2 id="services-title">Our Core Services</h2>
+      </div>
+
+      <div class="services-grid" role="list" aria-label="Core services">
+        <article class="service" role="listitem" aria-labelledby="s1">
+          <div class="icon" aria-hidden="true">BI</div>
+          <div>
+            <h3 id="s1">Branding &amp; Identity</h3>
+            <p>Logo &amp; Brand Kits, Web Design — craft a clear, authoritative visual voice that scales.</p>
+          </div>
+        </article>
+
+        <article class="service" role="listitem" aria-labelledby="s2">
+          <div class="icon" aria-hidden="true">LG</div>
+          <div>
+            <h3 id="s2">Lead Generation</h3>
+            <p>Targeted Paid Ads, UGC Campaigns — performance-first strategies that fuel growth.</p>
+          </div>
+        </article>
+
+        <article class="service" role="listitem" aria-labelledby="s3">
+          <div class="icon" aria-hidden="true">VS</div>
+          <div>
+            <h3 id="s3">Visual Storytelling</h3>
+            <p>Illustration, Animation, Character Design — memorable creative that captures attention.</p>
+          </div>
+        </article>
+
+        <article class="service" role="listitem" aria-labelledby="s4">
+          <div class="icon" aria-hidden="true">DM</div>
+          <div>
+            <h3 id="s4">Digital Marketing</h3>
+            <p>Social Media Management, SEO — long-term visibility and consistent audience growth.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="container" aria-labelledby="testi-title">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+        <h2 id="testi-title">Trusted by Visionary Brands</h2>
+        <div class="muted">Real results. Real partnerships.</div>
+      </div>
+
+      <div class="testi-wrap">
+        <div class="carousel" id="testimonialCarousel" aria-live="polite">
+          <div class="slides" id="slides">
+            <!-- Slide 1 -->
+            <div class="slide" aria-hidden="false">
+              <div style="width:64px;height:64px;border-radius:10px;flex-shrink:0;overflow:hidden;">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Client photo" style="width:64px;height:64px;object-fit:cover">
+              </div>
+              <div>
+                <p class="quote">"Vox Marketing took our brand from basic to unforgettable. Conversions rose by 32% — and the creative felt genuinely us."</p>
+                <div class="byline"><strong>Chief Obi</strong>, NexGen Labs — Head of Growth</div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" aria-hidden="true">
+              <div style="width:64px;height:64px;border-radius:10px;flex-shrink:0;overflow:hidden;">
+                <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Client photo" style="width:64px;height:64px;object-fit:cover">
+              </div>
+              <div>
+                <p class="quote">"Their ad funnels were meticulously tested. We scaled our store with UGC creatives that actually performed."</p>
+                <div class="byline"><strong>Amaka I.</strong>, SokoWear — Founder</div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" aria-hidden="true">
+              <div style="width:64px;height:64px;border-radius:10px;flex-shrink:0;overflow:hidden;">
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Client photo" style="width:64px;height:64px;object-fit:cover">
+              </div>
+              <div>
+                <p class="quote">"Fast, clear communication and strategy-first planning. Vox made launching into new markets effortless."</p>
+                <div class="byline"><strong>Maria Torres</strong>, Atlas Commerce — CMO</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" role="tablist" aria-label="Testimonial navigation" id="dots">
+          <button class="dot active" aria-label="Show testimonial 1" data-slide="0"></button>
+          <button class="dot" aria-label="Show testimonial 2" data-slide="1"></button>
+          <button class="dot" aria-label="Show testimonial 3" data-slide="2"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container" aria-labelledby="cta-title">
+      <div class="cta" role="region" aria-labelledby="cta-title">
+        <div>
+          <h3 id="cta-title">Ready to Amplify Your Growth?</h3>
+          <p>Schedule a free, no-obligation consultation to unlock your brand's potential.</p>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="btn" onclick="location.href='mailto:hello@voxmarketing.com?subject=Free%20Strategy%20Call'">
+            Schedule Your Free Call Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" aria-labelledby="footer-title">
+    <div class="container footer-grid">
+      <div class="footer-left">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="logo-mark" aria-hidden="true" style="width:44px;height:44px">Vx</div>
+          <div>
+            <div style="font-weight:600;">Vox Marketing</div>
+            <div style="color:var(--muted);font-size:0.95rem">We deliver brand voice and digital velocity.</div>
+          </div>
+        </div>
+
+        <div class="small">
+          hello@voxmarketing.com<br>
+          Lagos, Nigeria
+        </div>
+
+        <div class="socials" aria-label="Social media">
+          <a href="#" aria-label="Instagram (placeholder)" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/><circle cx="18.2" cy="5.8" r="0.6" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn (placeholder)" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h4v16H4zM8 4a2 2 0 110 4 2 2 0 010-4zM14 10v10h4v-5.5c0-3 0-6.5-4-6.5-2 0-3 1-3.5 1.8V10z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter (placeholder)" title="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 3c-2.5 0-4.5 2.3-3.9 4.7A12.94 12.94 0 013 4s-4 9 5 13a13 13 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:600;margin-bottom:8px">Important Links</div>
+          <div class="footer-links" style="flex-direction:column;align-items:flex-start">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#work">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-weight:600;margin-bottom:8px">Contact</div>
+          <div class="small">hello@voxmarketing.com</div>
+          <div class="small">+234 800 000 0000</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container" style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div class="small">© <span id="year"></span> Vox Marketing. All rights reserved.</div>
+      <div class="small muted">Designed for advertising agencies, founders, e-commerce & international teams.</div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS for carousel and small interactions -->
+  <script>
+    (function(){
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const slidesEl = document.getElementById('slides');
+      const dots = Array.from(document.querySelectorAll('.dot'));
+      const total = dots.length;
+      let index = 0;
+      let animating = false;
+      const intervalTime = 5000; // ms
+
+      function goTo(i, instant){
+        if(animating) return;
+        index = (i + total) % total;
+        const x = -index * 100;
+        if (instant) {
+          slidesEl.style.transition = 'none';
+        } else {
+          slidesEl.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1)';
+        }
+        slidesEl.style.transform = 'translateX(' + x + '%)';
+
+        dots.forEach((d, idx) => {
+          d.classList.toggle('active', idx === index);
+          d.setAttribute('aria-selected', idx === index ? 'true' : 'false');
+        });
+
+        if (instant) {
+          // force reflow then restore transition
+          void slidesEl.offsetWidth;
+          slidesEl.style.transition = '';
+        }
+      }
+
+      // Attach dot handlers
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goTo(i, false);
+          resetTimer();
+        });
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dot.click();
+          }
+        });
+      });
+
+      // Auto-rotate
+      let timer = setInterval(() => { goTo(index + 1); }, intervalTime);
+      function resetTimer(){ clearInterval(timer); timer = setInterval(() => { goTo(index + 1); }, intervalTime); }
+
+      // Pause on hover for accessibility
+      const carousel = document.getElementById('testimonialCarousel');
+      carousel.addEventListener('mouseenter', () => { clearInterval(timer); });
+      carousel.addEventListener('mouseleave', () => { resetTimer(); });
+
+      // Keyboard arrow navigation
+      window.addEventListener('keydown', (e) => {
+        if (['ArrowLeft','ArrowRight'].includes(e.key)) {
+          if (e.key === 'ArrowLeft') { goTo(index - 1); resetTimer(); }
+          if (e.key === 'ArrowRight') { goTo(index + 1); resetTimer(); }
+        }
+      });
+
+      // Initialize
+      goTo(0, true);
+
+      // Make sure slides container width fits children on resize
+      function refresh(){
+        // nothing fancy required because slides use min-width:100%
+      }
+      window.addEventListener('resize', refresh);
+    })();
+  </script>
+</body>
+</html>
+```
